@@ -26,13 +26,31 @@ function PipelineVisual() {
 
 function ModulesVisual() {
   return (
-    <div className="modules-visual" aria-label="Learning modules becoming a structured path">
-      <div className="module scattered">PYTHON</div>
-      <div className="module scattered">MATH</div>
-      <div className="module scattered">READINESS</div>
-      <div className="module path">01 · ASSESS</div>
-      <div className="module path">02 · PRACTICE</div>
-      <div className="module path">03 · ARRIVE READY</div>
+    <div className="modules-visual" aria-label="Incoming student readiness signals becoming a structured learning roadmap">
+      <div className="readiness-heading">
+        <span>PROGRAM READINESS SYSTEM</span>
+        <strong>Signals in. A clearer start out.</strong>
+      </div>
+
+      <div className="readiness-sources" aria-hidden="true">
+        <div><span>01</span><b>Python</b><small>coding foundations</small></div>
+        <div><span>02</span><b>Mathematics</b><small>quantitative readiness</small></div>
+        <div><span>03</span><b>Student needs</b><small>experience gaps</small></div>
+      </div>
+
+      <div className="readiness-transform" aria-hidden="true">
+        <span>SCATTERED INPUTS</span>
+        <i />
+        <b>READINESS GAPS</b>
+        <i />
+        <span>CONTENT ROADMAP</span>
+      </div>
+
+      <div className="learning-path" aria-hidden="true">
+        <div><span>01</span><strong>Assess</strong><small>find the gaps</small></div>
+        <div><span>02</span><strong>Structure</strong><small>sequence the content</small></div>
+        <div><span>03</span><strong>Arrive ready</strong><small>start with confidence</small></div>
+      </div>
     </div>
   );
 }
