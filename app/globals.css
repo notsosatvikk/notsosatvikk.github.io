@@ -680,11 +680,16 @@ img { display: block; max-width: 100%; }
 .edge-two { background: #e4d6b9; transform: rotate(.5deg) translate(5px, -2px); }
 .project-folder-inner { position: absolute; inset: 0; z-index: 2; overflow: hidden; border: 1px solid rgba(25,22,21,.14); border-radius: 22px 22px 12px 12px; background: #f4ecd9; }
 .project-panel { height: 100%; display: grid; grid-template-columns: minmax(0, 47%) minmax(0, 53%); gap: clamp(22px, 3vw, 46px); padding: clamp(20px, 2.4vw, 38px); animation: panel-in 540ms cubic-bezier(.22,.8,.24,1) both; }
+/* Author display rules override the browser's default [hidden] styling. Keep
+   inactive panels out of layout so the selected project can actually replace
+   the first one inside the clipped folder. */
+.project-panel[hidden] { display: none; }
 @keyframes panel-in { from { opacity: 0; transform: translateY(16px) scale(.99); } }
 .project-visual { min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 12px; }
 .project-image-frame { position: relative; min-height: 0; flex: 1; overflow: hidden; border: 10px solid rgba(255,255,255,.6); border-radius: 16px; background: var(--project-accent); box-shadow: 0 12px 28px rgba(25,22,21,.12); transform: rotate(-.7deg); }
 .project-image-frame::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(25,22,21,.12); pointer-events: none; }
-.project-image-frame img { width: 100%; height: 100%; object-fit: cover; }
+.project-image-frame img { width: 100%; height: 100%; object-fit: contain; }
+.project-image-people-first img { object-fit: cover; }
 .project-image-label { position: absolute; bottom: 8px; left: 8px; padding: 5px 8px; color: var(--cream); background: rgba(25,22,21,.82); border-radius: 999px; font-size: .52rem; font-weight: 850; letter-spacing: .1em; }
 .project-metrics { display: flex; gap: 8px; }
 .project-metrics > div { flex: 1; display: grid; gap: 2px; padding: 11px 13px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.35); }

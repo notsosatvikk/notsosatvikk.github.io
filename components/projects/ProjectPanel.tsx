@@ -11,7 +11,10 @@ export function ProjectPanel({ project, index, active }: { project: Project; ind
       hidden={!active}
     >
       <div className="project-visual">
-        <div className="project-image-frame" style={{ "--project-accent": project.accent } as React.CSSProperties}>
+        <div
+          className={`project-image-frame project-image-${project.id}`}
+          style={{ "--project-accent": project.accent } as React.CSSProperties}
+        >
           <Image
             src={project.image.src}
             alt={project.image.alt}

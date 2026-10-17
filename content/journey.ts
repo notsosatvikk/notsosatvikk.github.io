@@ -7,7 +7,7 @@ export const journeyEntries: JourneyEntry[] = [
     group: "Career",
     organization: "GoElite, Inc.",
     location: "Pasadena, California",
-    dates: "June 2026 – September 2026",
+    dates: "July 2026 – September 2026",
     title: "Campaign Marketing and Business Development Intern",
     status: "Latest chapter",
     challenge: "Build a trustworthy acquisition channel for international students making high-stakes, regulated decisions.",

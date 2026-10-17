@@ -17,7 +17,29 @@ test("project tabs support arrow keys", async ({ page }) => {
   await firstTab.focus();
   await page.keyboard.press("ArrowRight");
   await expect(page.getByRole("tab", { name: /People-First/ })).toHaveAttribute("aria-selected", "true");
-  await expect(page.getByRole("tabpanel")).toContainText("projected engagement lift");
+  const activePanel = page.getByRole("tabpanel");
+  await expect(activePanel).toContainText("projected engagement lift");
+  await expect(activePanel.locator("img")).toHaveAttribute("src", /people-first/);
+  await expect(page.locator(".project-panel[hidden]:visible")).toHaveCount(0);
+});
+
+test("every project tab swaps both its story and its artifact", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/#projects");
+
+  const cases = [
+    { tab: /Incite/, text: "85%", image: /incite-ui/ },
+    { tab: /People-First/, text: "projected engagement lift", image: /people-first/ },
+    { tab: /Streaming Analytics/, text: "one million records", image: /streaming-dashboard/ },
+    { tab: /Emotion AI/, text: "CNN + LSTM", image: /emotion-ai/ }
+  ];
+
+  for (const project of cases) {
+    await page.getByRole("tab", { name: project.tab }).click();
+    const panel = page.getByRole("tabpanel");
+    await expect(panel).toContainText(project.text);
+    await expect(panel.locator("img")).toHaveAttribute("src", project.image);
+  }
 });
 
 test("mobile menu closes with Escape and returns focus", async ({ page }) => {

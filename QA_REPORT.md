@@ -1,5 +1,15 @@
 # QA report
 
+## 2026-10-17 live project-section repair
+
+- Root cause: `.project-panel { display: grid; }` overrode the browser's default rendering for the HTML `hidden` attribute. State, tab selection and progress could change, but the first Incite panel remained in layout and covered the other projects.
+- Added an explicit `.project-panel[hidden] { display: none; }` rule so tab clicks, keyboard navigation and desktop scroll progression swap the complete panel.
+- Added a regression test that opens every project and verifies both its unique story text and its unique image source.
+- Changed supplied project composites to `object-fit: contain` so the actual artifacts remain visible; People-First intentionally retains a photo-led crop.
+- Confirmed the four production records reference four distinct supplied assets: Incite, People-First, Streaming Analytics and Emotion AI.
+- Corrected GoElite's displayed start month from June to the approved July 2026 date.
+- Content QA passes after the repair. A local framework build remains unavailable in this environment because npm registry access is blocked; GitHub Actions is the authoritative production build check.
+
 ## 2026-09-29 interaction update
 
 - Added the opening Signal Lens with a cursor/touch-positioned reveal and a keyboard-operable full-scene resolution.
